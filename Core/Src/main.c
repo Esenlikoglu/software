@@ -122,24 +122,36 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
-  unsigned char colorTest = TRUE;
+//  unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+
+  HAL_UART_Transmit_IT(&huart2, (uint8_t *)"Hier typen: ", BYTE_BUFLEN+10);
+
+
+
   while (1)
   {
-	  if(input.command_execute_flag == TRUE)
-	  {
-		  // Do some stuff
-		  printf("yes\n");
-		  colorTest = ~colorTest; // Toggle screen color
-		  UB_VGA_FillScreen(colorTest);
 
-		  // When finished reset the flag
-		  input.command_execute_flag = FALSE;
-	  }
+
+
+
+
+
+//	  if(input.command_execute_flag == TRUE)
+//	  {
+//		  // Do some stuff
+//		  printf("yes\n");
+//		  colorTest = ~colorTest; // Toggle screen color
+//		  UB_VGA_FillScreen(colorTest);
+//
+//		  // When finished reset the flag
+//		  input.command_execute_flag = FALSE;
+//	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -253,6 +253,8 @@ void USART2_IRQHandler(void)
 	// Store the byte we received on the UART
 	char uart_char = USART2->DR;
 
+
+
 	//Ignore the '\n' character
 	if(uart_char != LINE_FEED)
 	{

@@ -46,6 +46,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+uint8_t r;
+uint16_t i,n,m;
+
 input_vars input;
 
 volatile char container[1024];
@@ -99,6 +102,9 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
+  __HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);
+
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
   UB_VGA_FillScreen(VGA_COL_RED);
@@ -106,15 +112,15 @@ int main(void)
   UB_VGA_SetPixel(0,0,0x00);
   UB_VGA_SetPixel(319,0,0x00);
 
-  int i;
+//  int i;
 
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
-
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = FALSE;
+//  for(i = 0; i < LINE_BUFLEN; i++)
+//	  input.line_rx_buffer[i] = 0;
+//
+//  // Reset some stuff
+//  input.byte_buffer_rx[0] = 0;
+//  input.char_counter = 0;
+//  input.command_execute_flag = FALSE;
 
   // HAl wants a memory location to store the charachter it receives from the UART
   // We will pass it an array, but we will not use it. We declare our own variable in the interupt handler
@@ -130,13 +136,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 
 
-  HAL_UART_Transmit_IT(&huart2, (uint8_t *)"Hier typen: ", BYTE_BUFLEN+10);
+//  HAL_UART_Transmit_IT(&huart2, (uint8_t *)"Hier typen: ", BYTE_BUFLEN+10);
 
 
 
   while (1)
   {
-
 
 
 
@@ -151,7 +156,7 @@ int main(void)
 //
 //		  // When finished reset the flag
 //		  input.command_execute_flag = FALSE;
-//	  }
+	  	  //	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -204,17 +209,27 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-#ifdef __GNUC__
-	#define USART_PRINTF int __io_putchar(int ch)		//With GCC/RAISONANCE printf calls __io_putchar()
-#else
-	#define USART_PRINTF int fputc(int ch, FILE *f)		//With other compiler printf calls fputc()
-#endif /* __GNUC__ */
+//#ifdef __GNUC__
+//	#define USART_PRINTF int __io_putchar(int ch)		//With GCC/RAISONANCE printf calls __io_putchar()
+//#else
+//	#define USART_PRINTF int fputc(int ch, FILE *f)		//With other compiler printf calls fputc()
+//#endif /* __GNUC__ */
 
 //Retargets the C library printf function to the USART
-USART_PRINTF
+//USART_PRINTF
+//{
+//	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);	//Write character to UART2
+//	return ch;												//Return the character
+//}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);	//Write character to UART2
-	return ch;												//Return the character
+	switch(r)
+	{
+	case 'A': n = i; i=0; break;
+	case 'B': m = i; i=0; break;
+	default: i = 10*i+r-0x30;
+	}
 }
 
 /* USER CODE END 4 */

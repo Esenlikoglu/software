@@ -62,6 +62,7 @@ extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern TIM_HandleTypeDef htim1;
 /* USER CODE END EV */
+extern uint8_t r;
 
 /******************************************************************************/
 /*           Cortex-M4 Processor Interruption and Exception Handlers          */
@@ -250,38 +251,39 @@ void USART2_IRQHandler(void)
 {
   /* USER CODE BEGIN USART2_IRQn 0 */
 
-	// Store the byte we received on the UART
-	char uart_char = USART2->DR;
+
+//	// Store the byte we received on the UART
+//	char uart_char = USART2->DR;
 
 
 
-	//Ignore the '\n' character
-	if(uart_char != LINE_FEED)
-	{
-		//Check for CR or a dot
-		// There was a small bug in the terminal program.
-		// By terminating your message with a dot you can ignore the CR (Enter) character
-		if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
-		{
-			input.command_execute_flag = TRUE;
-			// Store the message length for processing
-			input.msglen = input.char_counter;
-			// Reset the counter for the next line
-			input.char_counter = 0;
-			//Gently exit interrupt
-		}
-		else
-		{
-			input.command_execute_flag = FALSE;
-			input.line_rx_buffer[input.char_counter] = uart_char;
-			input.char_counter++;
-		}
-	}
+//	//Ignore the '\n' character
+//	if(uart_char != LINE_FEED)
+//	{
+//		//Check for CR or a dot
+//		// There was a small bug in the terminal program.
+//		// By terminating your message with a dot you can ignore the CR (Enter) character
+//		if((uart_char == CARRIAGE_RETURN) || (uart_char == '.'))
+//		{
+//			input.command_execute_flag = TRUE;
+//			// Store the message length for processing
+//			input.msglen = input.char_counter;
+//			// Reset the counter for the next line
+//			input.char_counter = 0;
+//			//Gently exit interrupt
+//		}
+//		else
+//		{
+//			input.command_execute_flag = FALSE;
+//			input.line_rx_buffer[input.char_counter] = uart_char;
+//			input.char_counter++;
+//		}
+//	}
 
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-
+  HAL_UART_Receive_IT(&huart2, &r, BYTE_BUFLEN);
   /* USER CODE END USART2_IRQn 1 */
 }
 

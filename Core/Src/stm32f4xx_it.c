@@ -62,7 +62,7 @@ extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern TIM_HandleTypeDef htim1;
 /* USER CODE END EV */
-extern uint8_t r;
+
 
 /******************************************************************************/
 /*           Cortex-M4 Processor Interruption and Exception Handlers          */
@@ -252,11 +252,10 @@ void USART2_IRQHandler(void)
   /* USER CODE BEGIN USART2_IRQn 0 */
 
 
-//	// Store the byte we received on the UART
+	// Store the byte we received on the UART
 //	char uart_char = USART2->DR;
-
-
-
+//
+//
 //	//Ignore the '\n' character
 //	if(uart_char != LINE_FEED)
 //	{
@@ -283,7 +282,7 @@ void USART2_IRQHandler(void)
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-  HAL_UART_Receive_IT(&huart2, &r, BYTE_BUFLEN);
+  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   /* USER CODE END USART2_IRQn 1 */
 }
 

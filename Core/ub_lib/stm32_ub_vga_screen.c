@@ -89,3 +89,15 @@ void UB_VGA_SetPixel(uint16_t xp, uint16_t yp, uint8_t color)
   // Write pixel to ram
   VGA_RAM1[(yp * (VGA_DISPLAY_X + 1)) + xp] = color;
 }
+
+void UB_VGA_SetPixel3d(uint16_t xp, uint16_t yp,uint16_t zp, uint8_t color)
+{
+  if(xp >= VGA_DISPLAY_X)
+    xp = 0;
+  if(yp >= VGA_DISPLAY_Y)
+    yp = 0;
+  if(zp >= VGA_DISPLAY_Y)
+    zp = 0;
+  // Write pixel to ram
+  VGA_RAM1[(yp * (VGA_DISPLAY_X + 1)) + xp] = color;
+}

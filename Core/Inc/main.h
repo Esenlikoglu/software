@@ -108,16 +108,9 @@ typedef struct
 extern input_vars input;
 
 
-typedef struct
-{
-	char lettertype[20];
-	char consolas[20];
-	char fontgroottex[20];
-	char fontgroottey[20];
-	char fontnormaal[20];
-	char fontvet[20];
-	char fontcursief[20];
-}fontvariabelen;
+typedef enum fontnaam{arial,consolas}NAAM;
+typedef enum fontgrootte{klein,groot}GROOTTE;
+typedef enum fontstijl{normaal, vet, cursief}STIJL;
 
 
 typedef struct
@@ -126,9 +119,9 @@ typedef struct
 	uint16_t y;
 	uint8_t kleur;
 	char tekst;
-	fontvariabelen fontnaam;
-	fontvariabelen fontgrootte;
-	fontvariabelen fontstijl;
+	NAAM name;
+	GROOTTE size;
+	STIJL style;
 
 }UI_t;
 

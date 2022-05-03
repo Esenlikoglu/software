@@ -52,6 +52,8 @@ volatile char container[1024];
 volatile int temp;
 volatile int key;
 
+UI_t commando;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -190,6 +192,32 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
+
+void parsandfillstruct(void)
+{
+	scanf("%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^;]" ,\
+	commando.x,commando.y,commando.kleur,commando.tekst,(commando.fontnaam.lettertype),\
+	(commando.fontnaam.consolas),(commando.fontgrootte.fontgroottex),\
+	(commando.fontgrootte.fontgroottey),(commando.fontstijl.fontnormaal),\
+	(commando.fontstijl.fontcursief),(commando.fontstijl.fontvet));
+	printf("\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* USER CODE BEGIN 4 */
 

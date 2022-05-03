@@ -1,5 +1,5 @@
-../Core/Src/bitmap.c:42:7:alloc_img	24	static
-../Core/Src/bitmap.c:52:6:free_img	16	static
-../Core/Src/bitmap.c:58:6:fill_img	24	static
-../Core/Src/bitmap.c:74:6:put_pixel_unsafe	32	static
-../Core/Src/bitmap.c:89:6:put_pixel_clip	32	static
+../Core/Src/bitmap.c:43:7:alloc_img	24	static
+../Core/Src/bitmap.c:53:6:free_img	16	static
+../Core/Src/bitmap.c:59:6:fill_img	24	static
+../Core/Src/bitmap.c:75:6:put_pixel_unsafe	32	static
+../Core/Src/bitmap.c:90:6:put_pixel_clip	32	static

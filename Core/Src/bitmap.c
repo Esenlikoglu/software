@@ -7,6 +7,7 @@
 #include <string.h>
 #include <math.h>
 #include <sys/queue.h>
+#include "main.h"
 
 typedef unsigned char color_component;
 typedef color_component pixel[3];

@@ -1,4 +1,4 @@
-Core/Src/bitmap.o: ../Core/Src/bitmap.c ../Core/Inc/main.h \
+Core/Src/draw.o: ../Core/Src/draw.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \

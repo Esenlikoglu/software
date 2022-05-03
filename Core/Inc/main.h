@@ -122,10 +122,10 @@ typedef struct
 
 typedef struct
 {
-	char x[20];
-	char y[20];
-	char kleur[20];
-	char tekst[20];
+	uint16_t x;
+	uint16_t y;
+	uint8_t kleur;
+	char tekst;
 	fontvariabelen fontnaam;
 	fontvariabelen fontgrootte;
 	fontvariabelen fontstijl;

@@ -205,20 +205,6 @@ void parsandfillstruct(void)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* USER CODE BEGIN 4 */
 
 #ifdef __GNUC__

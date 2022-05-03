@@ -56,6 +56,7 @@ volatile int key;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void ParsandFillstruct(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */

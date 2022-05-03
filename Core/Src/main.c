@@ -196,12 +196,7 @@ void SystemClock_Config(void)
 
 void parsandfillstruct(void)
 {
-	scanf("%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^;]" ,\
-	commando.x,commando.y,commando.kleur,commando.tekst,(commando.fontnaam.lettertype),\
-	(commando.fontnaam.consolas),(commando.fontgrootte.fontgroottex),\
-	(commando.fontgrootte.fontgroottey),(commando.fontstijl.fontnormaal),\
-	(commando.fontstijl.fontcursief),(commando.fontstijl.fontvet));
-	printf("\n");
+
 }
 
 

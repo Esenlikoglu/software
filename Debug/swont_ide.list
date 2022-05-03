@@ -578,8 +578,8 @@ int main(void)
   UB_VGA_Screen_Init(); // Init VGA-Screen
  800061e:	f000 fcaf 	bl	8000f80 <UB_VGA_Screen_Init>
 
-  UB_VGA_FillScreen(VGA_COL_WHITE);
- 8000622:	20ff      	movs	r0, #255	; 0xff
+  UB_VGA_FillScreen(VGA_COL_BLACK);
+ 8000622:	2000      	movs	r0, #0
  8000624:	f000 fcfe 	bl	8001024 <UB_VGA_FillScreen>
   UB_VGA_SetPixel(10,10,10);
  8000628:	220a      	movs	r2, #10

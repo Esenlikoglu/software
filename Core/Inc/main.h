@@ -107,6 +107,32 @@ typedef struct
 }input_vars;
 extern input_vars input;
 
+
+typedef struct
+{
+	char lettertype[20];
+	char consolas[20];
+	char fontgroottex[20];
+	char fontgroottey[20];
+	char fontnormaal[20];
+	char fontvet[20];
+	char fontcursief[20];
+}fontvariabelen;
+
+
+typedef struct
+{
+	char x[20];
+	char y[20];
+	char kleur[20];
+	char tekst[20];
+	fontvariabelen fontnaam;
+	fontvariabelen fontgrootte;
+	fontvariabelen fontstijl;
+
+}UI_t;
+
+
 /* Globals -------------------------------------------------------------------*/
 extern volatile char container[1024];
 extern volatile int temp;

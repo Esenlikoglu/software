@@ -116,7 +116,7 @@ typedef struct
 	uint16_t x;
 	uint16_t y;
 	uint8_t kleur;
-	char tekst;
+	char tekst[100];   //Dit moet een define worden
 	uint8_t fontnaam;
 	uint8_t fontgrootte;
 	uint8_t fontstijl;

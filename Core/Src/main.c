@@ -138,7 +138,7 @@ int main(void)
 		  // Do some stuff
 		  //input.command_execute_flag = test;
 		  printf("yes\n");
-		  printf(input.char_counter);
+		  printf("%s",input.line_rx_buffer);
 		  colorTest = ~colorTest; // Toggle screen color
 		  UB_VGA_FillScreen(colorTest);
 

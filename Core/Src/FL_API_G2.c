@@ -30,19 +30,14 @@ void API_Getcommand(UI_t commando)
 	input.command_execute_flag = FALSE;
 
 
-	// HAl wants a memory location to store the charachter it receives from the UART
-	// We will pass it an array, but we will not use it. We declare our own variable in the interupt handler
-	// See stm32f4xx_it.c
-	//HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
-
+	//copy the buffer into the struct
 	strcpy(commando.type, input.line_rx_buffer);
 
-
+    //Comparing the struct with certain strings
 	if( strcmp(commando.type, "lijn") == 0 )
 			 {
 				 printf("voer in de data met een comma daartussen\n\n");
-					printf(" x, y, x’, y’, kleur, dikte\n");
-				// printf("het is lijn\n");
+				 printf(" x, y, x’, y’, kleur, dikte\n");
 			 }
 
 			 else if( strcmp(commando.type, "rechthoek") == 0 )
@@ -70,6 +65,7 @@ void API_Getcommand(UI_t commando)
 				 printf("Ongeldig commando\n");
 			 }
 
+			 //clear the buffer
 			 for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
 
 }

@@ -10,4 +10,12 @@
 
 input_vars input;
 
+void API_Getcommand(UI_t commando);
+
+void Commacounter(UI_t commando);
+
+void linedecoder(UI_t commando);
+
 #endif /* INC_FL_API_G2_H_ */
+
+

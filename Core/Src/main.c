@@ -124,6 +124,7 @@ int main(void)
 	 if(input.command_execute_flag == TRUE)
 	  {
 		 API_Getcommand(commandos);
+
 	  // When finished reset the flag
 	     input.command_execute_flag = FALSE;
 	  }

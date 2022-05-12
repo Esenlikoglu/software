@@ -114,13 +114,16 @@ extern input_vars input;
 typedef struct
 {
 	char type[11];
-	uint16_t x;
-	uint16_t y;
+	uint16_t x_1;
+	uint16_t y_1;
+	uint16_t x_2;
+	uint16_t y_2;
 	uint8_t kleur;
-	char tekst[100];   //Dit moet een define worden
-	uint8_t fontnaam;
-	uint8_t fontgrootte;
-	uint8_t fontstijl;
+	uint16_t dikte;
+	//char tekst[100];   //Dit moet een define worden
+	//uint8_t fontnaam;
+	//uint8_t fontgrootte;
+	//uint8_t fontstijl;
 
 }UI_t;
 extern UI_t commando;

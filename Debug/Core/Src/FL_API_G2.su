@@ -1,1 +1,2 @@
-../Core/Src/FL_API_G2.c:20:6:API_Getcommand	16	static
+../Core/Src/FL_API_G2.c:24:6:Commacounter	16	static
+../Core/Src/FL_API_G2.c:76:6:API_Getcommand	24	static

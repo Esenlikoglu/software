@@ -23,6 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -51,9 +52,11 @@ input_vars input;
 volatile char container[1024];
 volatile int temp;
 volatile int key;
-
+extern char commacounter;
 UI_t commando;
-
+int cmp;
+char copy;
+int beginx, beginy;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,7 +77,7 @@ void ParsandFillstruct(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+//  /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
 
@@ -125,7 +128,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
-  unsigned char colorTest = TRUE;
+  //unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
 
@@ -135,12 +138,88 @@ int main(void)
   {
 	  if(input.command_execute_flag == TRUE)
 	  {
+
+
 		  // Do some stuff
 		  //input.command_execute_flag = test;
-		  printf("yes\n");
-		  printf("%s",input.line_rx_buffer);
-		  colorTest = ~colorTest; // Toggle screen color
-		  UB_VGA_FillScreen(colorTest);
+		  //printf("yes\n");
+//		  printf("Hierna komt de string\n");
+
+//		  for(i=0; i<11; i++)
+//		  {
+//			  commando.type[i] = input.line_rx_buffer[i];
+//			  switch (commando.type[i])
+//			  {
+//			  	  case ',':
+//			  		beginx=i;
+//			  	  commando.type[i] = 0;
+//			  	  break;
+//			  }
+//
+//		  }
+//
+//		  for(i=beginx; i<beginx+2; i++)
+//		  		  {
+//		  			  commando.type[i] = input.line_rx_buffer[i];
+//		  			  switch (commando.type[i])
+//		  			  {
+//		  			  	  case ',':
+//		  			  		beginy=i;
+//		  			  	  commando.type[i] = 0;
+//		  			  	  break;
+//		  			  }
+//		  		  }
+
+		 strcpy(commando.type, input.line_rx_buffer);
+
+
+		 if( strcmp(commando.type, "lijn") == 0 )
+		 {
+			 printf("voer in de data met een comma daartussen\n\n");
+				printf(" x, y, x/’, y/’, kleur, dikte\n");
+			// printf("het is lijn\n");
+		 }
+
+		 else if( strcmp(commando.type, "rechthoek") == 0 )
+		 {
+			 printf("het is rechthoek\n");
+		 }
+
+		 else if( strcmp(commando.type, "tekst") == 0 )
+		 {
+			  printf("het is tekst\n");
+		 }
+
+		 else if( strcmp(commando.type, "bitmap") == 0 )
+		 {
+			  printf("het is bitmap\n");
+		 }
+
+		 else if( strcmp(commando.type, "clearscreen") == 0 )
+		 {
+			  printf("het is clearscreen\n");
+		 }
+
+		 else
+		 {
+			 printf("Ongeldige commando\n");
+		 }
+
+		 for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
+
+
+//		  printf("%s \n", input.line_rx_buffer);
+//		  printf("Hierna komt de variabelennnnnnnn");
+//		  printf("%c",commando.x);
+//	      printf("%c",commando.x);
+//	      printf("%c",commando.y);
+//	      printf("%c",commando.kleur);
+//	      printf("%c",commando.tekst);
+//		  printf("%c",commando.fontgrootte);
+//		  printf("%c",commando.fontnaam);
+//		  printf("%c",commando.fontstijl);
+		 //colorTest = ~colorTest; // Toggle screen color
+		 // UB_VGA_FillScreen(colorTest);
 
 		  // When finished reset the flag
 		  input.command_execute_flag = FALSE;

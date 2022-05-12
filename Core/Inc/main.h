@@ -113,6 +113,7 @@ extern input_vars input;
 
 typedef struct
 {
+	char type[11];
 	uint16_t x;
 	uint16_t y;
 	uint8_t kleur;
@@ -122,7 +123,7 @@ typedef struct
 	uint8_t fontstijl;
 
 }UI_t;
-
+extern UI_t commando;
 
 /* Globals -------------------------------------------------------------------*/
 extern volatile char container[1024];

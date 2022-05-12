@@ -1,5 +1,1 @@
-../Core/Src/bitmap.c:43:7:alloc_img	24	static
-../Core/Src/bitmap.c:53:6:free_img	16	static
-../Core/Src/bitmap.c:59:6:fill_img	24	static
-../Core/Src/bitmap.c:75:6:put_pixel_unsafe	32	static
-../Core/Src/bitmap.c:90:6:put_pixel_clip	32	static
+../Core/Src/bitmap.c:13:6:API_bitmap	102416	static

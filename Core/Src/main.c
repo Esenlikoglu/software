@@ -21,9 +21,9 @@
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
+#include "text.h"
 #include "usart.h"
 #include "gpio.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -106,10 +106,11 @@ int main(void)
 //  UB_VGA_SetPixel(10,10,10);
 //  UB_VGA_SetPixel(0,0,0x00);
 //  UB_VGA_SetPixel(319,0,0x00);
-
-  UB_VGA_FillScreen(VGA_COL_BLACK);
+//  UB_VGA_FillScreen(VGA_COL_BLACK);
+//  void API_draw_text();
 //  plotLine(xposbegin,yposbegin,xposend,yposend,VGA_COL_RED);
-//   plotRect(xpos, ypos,width,length, VGA_COL_RED);
+   API_bitmap();
+//   plotRect(5, 5,5,5, VGA_COL_RED);
 //  plotCircle(xpos, ypos, radius,VGA_COL_RED);
   int i;
 
@@ -135,16 +136,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == TRUE)
-	  {
-		  // Do some stuff
-//		  printf("yes\n");
-//		  colorTest = ~colorTest; // Toggle screen color
-//		  UB_VGA_FillScreen(colorTest);
 //
-//		  // When finished reset the flag
-		  input.command_execute_flag = FALSE;
-	  }
+//	  if(input.command_execute_flag == TRUE)
+//	  {
+//		  // Do some stuff
+////		  printf("yes\n");
+////		  colorTest = ~colorTest; // Toggle screen color
+////		  UB_VGA_FillScreen(colorTest);
+////
+////		  // When finished reset the flag
+//		  input.command_execute_flag = FALSE;
+//	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -23,7 +23,6 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -47,16 +46,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-input_vars input;
+
 
 volatile char container[1024];
 volatile int temp;
 volatile int key;
-extern char commacounter;
-UI_t commando;
-int cmp;
-char copy;
-int beginx, beginy;
+
+UI_t commandos;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -112,19 +109,6 @@ int main(void)
   UB_VGA_SetPixel(0,0,0x00);
   UB_VGA_SetPixel(319,0,0x00);
 
-  int i;
-
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
-
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = FALSE;
-
-  // HAl wants a memory location to store the charachter it receives from the UART
-  // We will pass it an array, but we will not use it. We declare our own variable in the interupt handler
-  // See stm32f4xx_it.c
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
@@ -136,8 +120,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(input.command_execute_flag == TRUE)
+
+	 if(input.command_execute_flag == TRUE)
 	  {
+		 API_Getcommand(commandos);
+	  // When finished reset the flag
+	     input.command_execute_flag = FALSE;
+	  }
+
+
+
+//	  if(input.command_execute_flag == TRUE)
+//	  {
 
 
 		  // Do some stuff
@@ -170,42 +164,42 @@ int main(void)
 //		  			  }
 //		  		  }
 
-		 strcpy(commando.type, input.line_rx_buffer);
-
-
-		 if( strcmp(commando.type, "lijn") == 0 )
-		 {
-			 printf("voer in de data met een comma daartussen\n\n");
-				printf(" x, y, x/’, y/’, kleur, dikte\n");
-			// printf("het is lijn\n");
-		 }
-
-		 else if( strcmp(commando.type, "rechthoek") == 0 )
-		 {
-			 printf("het is rechthoek\n");
-		 }
-
-		 else if( strcmp(commando.type, "tekst") == 0 )
-		 {
-			  printf("het is tekst\n");
-		 }
-
-		 else if( strcmp(commando.type, "bitmap") == 0 )
-		 {
-			  printf("het is bitmap\n");
-		 }
-
-		 else if( strcmp(commando.type, "clearscreen") == 0 )
-		 {
-			  printf("het is clearscreen\n");
-		 }
-
-		 else
-		 {
-			 printf("Ongeldige commando\n");
-		 }
-
-		 for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
+//		 strcpy(commando.type, input.line_rx_buffer);
+//
+//
+//		 if( strcmp(commando.type, "lijn") == 0 )
+//		 {
+//			 printf("voer in de data met een comma daartussen\n\n");
+//				printf(" x, y, x’, y’, kleur, dikte\n");
+//			// printf("het is lijn\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "rechthoek") == 0 )
+//		 {
+//			 printf("het is rechthoek\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "tekst") == 0 )
+//		 {
+//			  printf("het is tekst\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "bitmap") == 0 )
+//		 {
+//			  printf("het is bitmap\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "clearscreen") == 0 )
+//		 {
+//			  printf("het is clearscreen\n");
+//		 }
+//
+//		 else
+//		 {
+//			 printf("Ongeldige commando\n");
+//		 }
+//
+//		 for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
 
 
 //		  printf("%s \n", input.line_rx_buffer);
@@ -222,8 +216,8 @@ int main(void)
 		 // UB_VGA_FillScreen(colorTest);
 
 		  // When finished reset the flag
-		  input.command_execute_flag = FALSE;
-	  }
+//		  input.command_execute_flag = FALSE;
+//	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -272,12 +266,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-
-void parsandfillstruct(void)
-{
-
 }
 
 

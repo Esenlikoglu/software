@@ -108,19 +108,6 @@ typedef struct
 extern input_vars input;
 
 
-typedef struct
-{
-	uint8_t x_lup;
-	uint8_t y_lup;
-	uint8_t breedte;
-	uint8_t hoogte;
-	uint8_t kleur;
-	uint8_t gevuld; // gevuld (1,0) [als 1: rand (1px) met kleur]
-
-}user_input;
-extern user_input uinput;
-
-
 /* Globals -------------------------------------------------------------------*/
 extern volatile char container[1024];
 extern volatile int temp;

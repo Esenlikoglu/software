@@ -1,3 +1,4 @@
+"./Core/Src/LL_API_G2.o"
 "./Core/Src/dma.o"
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"

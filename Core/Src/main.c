@@ -41,7 +41,6 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -50,11 +49,10 @@
 
 input_vars input;
 
-int j;
 
-//volatile char container[1024];
-//volatile int temp;
-//volatile int key;
+volatile char container[1024];
+volatile int temp;
+volatile int key;
 
 /* USER CODE END PV */
 
@@ -126,7 +124,7 @@ int main(void)
   // HAl wants a memory location to store the charachter it receives from the UART
   // We will pass it an array, but we will not use it. We declare our own variable in the interupt handler
   // See stm32f4xx_it.c
- // HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
+  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
   //unsigned char colorTest = TRUE;
@@ -140,21 +138,19 @@ int main(void)
   while (1)
   {
 
+	  if(input.command_execute_flag == TRUE)
+	  {
+		  errorno_test ();
 
-	 // printf("%s \n", input.line_rx_buffer);
-
-
-
-//	  if(input.command_execute_flag == TRUE)
-//	  {
 //		  // Do some stuff
 //		  printf("yes\n");
 //		  colorTest = ~colorTest; // Toggle screen color
 //		  UB_VGA_FillScreen(colorTest);
 //
 //		  // When finished reset the flag
-//		  input.command_execute_flag = FALSE;
-//	  	  	  }
+		  input.command_execute_flag = FALSE;
+
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -220,21 +216,39 @@ USART_PRINTF
 	return ch;												//Return the character
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	int val;
+//void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+//{
+//	int i;
+//	int val;
+//	int waarde = 5;
+//	char clear[5]="clear";
+//
+//	val = input.byte_buffer_rx[0];
+//
+//	switch(val)
+//	{
+//		default:
+//		HAL_UART_Receive_IT(&huart2, (uint8_t *)input.line_rx_buffer,  10);
+//		for (i = 0; i < 5; i++)
+//		{
+//			if (input.line_rx_buffer[i] == clear[i])
+//			{
+//				waarde --;
+//				if (waarde == 0)
+//				{
+//					USART2->DR = 0;
+//				}
+//			}
+//		}
+//		printf(input.line_rx_buffer);
+//		fflush(stdout);
+//	}
+//
+//	val = 0;
+//}
 
-	val = input.byte_buffer_rx[0];
-	switch(val)
-	{
-		default:
-		HAL_UART_Receive_IT(&huart2, (uint8_t *)input.line_rx_buffer,  LINE_BUFLEN/64);
-		printf(input.line_rx_buffer);
-		fflush(stdout);
-	}
 
-	val = 0;
-}
+
 
 /* USER CODE END 4 */
 

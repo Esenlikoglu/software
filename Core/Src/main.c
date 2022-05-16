@@ -28,6 +28,8 @@
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include "string.h"
+#include "LL_API_G2.h"
+#include <errno.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -130,7 +132,7 @@ int main(void)
   //unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
-
+char errnum;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
@@ -140,8 +142,8 @@ int main(void)
 
 	  if(input.command_execute_flag == TRUE)
 	  {
-		  errorno_test ();
-
+		  errnum = EDOM;
+		  show_errno(errnum);
 //		  // Do some stuff
 //		  printf("yes\n");
 //		  colorTest = ~colorTest; // Toggle screen color

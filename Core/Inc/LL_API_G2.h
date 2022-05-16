@@ -18,7 +18,7 @@
 //};
 
 
-void errorno_test (void);
+
 
 //s: custom error message
 //

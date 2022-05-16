@@ -1,2 +1,1 @@
-../Core/Src/LL_API_G2.c:12:6:errorno_test	8	static
-../Core/Src/LL_API_G2.c:18:6:show_errno	16	static
+../Core/Src/LL_API_G2.c:15:6:show_errno	16	static

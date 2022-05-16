@@ -29,7 +29,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h \
  ../Core/Inc/dma.h ../Core/Inc/main.h ../Core/Inc/tim.h \
- ../Core/Inc/usart.h ../Core/Inc/gpio.h
+ ../Core/Inc/usart.h ../Core/Inc/gpio.h ../Core/Inc/LL_API_G2.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -65,3 +65,4 @@ C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_
 ../Core/Inc/tim.h:
 ../Core/Inc/usart.h:
 ../Core/Inc/gpio.h:
+../Core/Inc/LL_API_G2.h:

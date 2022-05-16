@@ -5,19 +5,17 @@
  *      Author: Sahag
  */
 
-
+#include <stdio.h>
 #include <errno.h>
 #include "LL_API_G2.h"
 
-void errorno_test (void)
-{
-	printf("errno value: %d\n",errno);
 
-}
 
-void show_errno(void)
+
+void show_errno(const char *err_info)
 {
-    const char *err_info = "unknown error";
+
+    err_info = "unknown error";
     switch (errno) {
     case EDOM:
         err_info = "domain error";
@@ -31,8 +29,7 @@ void show_errno(void)
     case 0:
         err_info = "no error";
     }
-  //  fputs(err_info, stdout);
-   // puts(" occurred");
+    printf("ERROR: %s \n" ,err_info);
 }
 
 
@@ -46,12 +43,17 @@ void show_errno(void)
 //
 //
 //}
-//
-//
+
+
+
 ////errnum: error code
 ////
 ////Output: pointer to the implementation-defined error message string
 //char* strerror(int errnum)
 //{
+//
+//	errnum = 3;
+//
 //	return errno;
 //}
+

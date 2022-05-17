@@ -53,6 +53,7 @@ volatile int temp;
 volatile int key;
 
 UI_t commandos;
+input_vars input;
 
 /* USER CODE END PV */
 

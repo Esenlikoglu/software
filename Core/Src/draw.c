@@ -23,15 +23,25 @@ void plotLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1,uint8_t COLOR)
 }
 
 
-void plotRect(uint16_t xp,uint16_t yp,uint16_t width,uint16_t length, uint8_t COLOR)
+void plotRect(uint16_t xp,uint16_t yp,uint16_t width,uint16_t length, uint8_t COLOR, uint16_t fill)
 {
+	int y1;
+	if(fill==FALSE)
+	{
 	plotLine(xp,yp,xp,yp+length,COLOR);
 	plotLine(xp,yp,xp+width,yp,COLOR);
 	plotLine(xp+width,yp+length,xp+width,yp,COLOR);
 	plotLine(xp+width,yp+length,xp,yp+length,COLOR);
-
+	} else
+	{
+	y1 =yp;
+//	plotLine(xp,yp,xp+width,yp,COLOR);
+		for(y1=yp; y1<(yp+length); y1++)
+		{
+			plotLine(xp,yp+y1,xp+width,yp+(y1),COLOR>>1);
+		}
+	}
 }
-
 
 void plotCircle(uint16_t xm, uint16_t ym, int r,uint8_t COLOR)
 {

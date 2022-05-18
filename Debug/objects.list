@@ -1,3 +1,4 @@
+"./Core/Src/FL_API_G2.o"
 "./Core/Src/bitmap.o"
 "./Core/Src/dma.o"
 "./Core/Src/draw.o"

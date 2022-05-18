@@ -116,7 +116,7 @@ int main(void)
   //unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
-
+plotRect(50,50,50,50,VGA_COL_GREEN,1);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

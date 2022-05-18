@@ -35,10 +35,9 @@ void plotRect(uint16_t xp,uint16_t yp,uint16_t width,uint16_t length, uint8_t CO
 	} else
 	{
 	y1 =yp;
-//	plotLine(xp,yp,xp+width,yp,COLOR);
 		for(y1=yp; y1<(yp+length); y1++)
 		{
-			plotLine(xp,yp+y1,xp+width,yp+(y1),COLOR>>1);
+			plotLine(xp,yp+(y1-yp),xp+width,yp+(y1-yp),COLOR);
 		}
 	}
 }

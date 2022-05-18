@@ -1,0 +1,8 @@
+../Core/Src/FL_API_G2.c:44:6:API_Getcommand	120	static
+../Core/Src/FL_API_G2.c:77:6:API_Command_Data	8	static
+../Core/Src/FL_API_G2.c:109:5:API_ReLi_Sep	24	static
+../Core/Src/FL_API_G2.c:132:6:Seperate_line	56	static
+../Core/Src/FL_API_G2.c:163:6:Seperate_Rectangle	56	static
+../Core/Src/FL_API_G2.c:195:6:Seperate_Text	56	static
+../Core/Src/FL_API_G2.c:227:6:Seperate_Bitmap	56	static
+../Core/Src/FL_API_G2.c:255:6:Seperate_Clearscreen	56	static

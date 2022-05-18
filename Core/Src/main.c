@@ -21,9 +21,9 @@
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
-#include "text.h"
 #include "usart.h"
 #include "gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -46,16 +46,20 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-input_vars input;
+
 
 volatile char container[1024];
 volatile int temp;
 volatile int key;
 
+UI_t commandos;
+input_vars input;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void ParsandFillstruct(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -71,7 +75,7 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+//  /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
 
@@ -83,11 +87,6 @@ int main(void)
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
-char text[5]={65, 77, 73, 78,65};
-//char text1=67;
-
-API_text(75,75,VGA_COL_GREEN,text);
-//API_text(75,75,VGA_COL_GREEN,text1);
 
   /* Configure the system clock */
   SystemClock_Config();
@@ -103,33 +102,18 @@ API_text(75,75,VGA_COL_GREEN,text);
   MX_TIM2_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
-//  UB_VGA_FillScreen(VGA_COL_GREEN);
-//  UB_VGA_SetPixel(10,10,10);
-//  UB_VGA_SetPixel(0,0,0x00);
-//  UB_VGA_SetPixel(319,0,0x00);
-//  UB_VGA_FillScreen(VGA_COL_BLACK);
-//  void API_draw_text();
-//  plotLine(xposbegin,yposbegin,xposend,yposend,VGA_COL_RED);
+  UB_VGA_FillScreen(VGA_COL_BLACK);
+  UB_VGA_SetPixel(10,10,10);
+  UB_VGA_SetPixel(0,0,0x00);
+  UB_VGA_SetPixel(319,0,0x00);
 
-//   plotRect(5, 5,5,5, VGA_COL_RED);
-//  plotCircle(xpos, ypos, radius,VGA_COL_RED);
-  int i;
-  for(i = 0; i < LINE_BUFLEN; i++)
-	  input.line_rx_buffer[i] = 0;
-  // Reset some stuff
-  input.byte_buffer_rx[0] = 0;
-  input.char_counter = 0;
-  input.command_execute_flag = FALSE;
-
-  // HAl wants a memory location to store the charachter it receives from the UART
-  // We will pass it an array, but we will not use it. We declare our own variable in the interupt handler
-  // See stm32f4xx_it.c
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
-//  unsigned char colorTest = TRUE;
+  //unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
 
@@ -138,14 +122,104 @@ API_text(75,75,VGA_COL_GREEN,text);
   while (1)
   {
 
-	  if(input.command_execute_flag == TRUE)
+	 if(input.command_execute_flag == TRUE)
 	  {
-		  // Do some stuff
-		  printf("yes\n");
-	//	  colorTest = ~colorTest; // Toggle screen color
-		  // When finished reset the flag
-		  input.command_execute_flag = FALSE;
+		 API_Getcommand(commandos);
+
+	  // When finished reset the flag
+	     input.command_execute_flag = FALSE;
 	  }
+
+
+
+//	  if(input.command_execute_flag == TRUE)
+//	  {
+
+
+		  // Do some stuff
+		  //input.command_execute_flag = test;
+		  //printf("yes\n");
+//		  printf("Hierna komt de string\n");
+
+//		  for(i=0; i<11; i++)
+//		  {
+//			  commando.type[i] = input.line_rx_buffer[i];
+//			  switch (commando.type[i])
+//			  {
+//			  	  case ',':
+//			  		beginx=i;
+//			  	  commando.type[i] = 0;
+//			  	  break;
+//			  }
+//
+//		  }
+//
+//		  for(i=beginx; i<beginx+2; i++)
+//		  		  {
+//		  			  commando.type[i] = input.line_rx_buffer[i];
+//		  			  switch (commando.type[i])
+//		  			  {
+//		  			  	  case ',':
+//		  			  		beginy=i;
+//		  			  	  commando.type[i] = 0;
+//		  			  	  break;
+//		  			  }
+//		  		  }
+
+//		 strcpy(commando.type, input.line_rx_buffer);
+//
+//
+//		 if( strcmp(commando.type, "lijn") == 0 )
+//		 {
+//			 printf("voer in de data met een comma daartussen\n\n");
+//				printf(" x, y, x’, y’, kleur, dikte\n");
+//			// printf("het is lijn\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "rechthoek") == 0 )
+//		 {
+//			 printf("het is rechthoek\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "tekst") == 0 )
+//		 {
+//			  printf("het is tekst\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "bitmap") == 0 )
+//		 {
+//			  printf("het is bitmap\n");
+//		 }
+//
+//		 else if( strcmp(commando.type, "clearscreen") == 0 )
+//		 {
+//			  printf("het is clearscreen\n");
+//		 }
+//
+//		 else
+//		 {
+//			 printf("Ongeldige commando\n");
+//		 }
+//
+//		 for(i = 0; i < LINE_BUFLEN; i++) input.line_rx_buffer[i] = 0;
+
+
+//		  printf("%s \n", input.line_rx_buffer);
+//		  printf("Hierna komt de variabelennnnnnnn");
+//		  printf("%c",commando.x);
+//	      printf("%c",commando.x);
+//	      printf("%c",commando.y);
+//	      printf("%c",commando.kleur);
+//	      printf("%c",commando.tekst);
+//		  printf("%c",commando.fontgrootte);
+//		  printf("%c",commando.fontnaam);
+//		  printf("%c",commando.fontstijl);
+		 //colorTest = ~colorTest; // Toggle screen color
+		 // UB_VGA_FillScreen(colorTest);
+
+		  // When finished reset the flag
+//		  input.command_execute_flag = FALSE;
+//	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -195,6 +269,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+
 
 /* USER CODE BEGIN 4 */
 

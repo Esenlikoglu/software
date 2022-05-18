@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f4xx_it.h"
+#include "FL_API_G2.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -43,6 +44,8 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
 
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -61,6 +64,7 @@ extern TIM_HandleTypeDef htim2;
 extern UART_HandleTypeDef huart2;
 /* USER CODE BEGIN EV */
 extern TIM_HandleTypeDef htim1;
+extern input_vars input;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -253,7 +257,8 @@ void USART2_IRQHandler(void)
 	// Store the byte we received on the UART
 	char uart_char = USART2->DR;
 
-	//Ignore the '\n' character
+
+//	//Ignore the '\n' character
 	if(uart_char != LINE_FEED)
 	{
 		//Check for CR or a dot
@@ -266,7 +271,7 @@ void USART2_IRQHandler(void)
 			input.msglen = input.char_counter;
 			// Reset the counter for the next line
 			input.char_counter = 0;
-			//Gently exit interrupt
+
 		}
 		else
 		{
@@ -274,13 +279,14 @@ void USART2_IRQHandler(void)
 			input.line_rx_buffer[input.char_counter] = uart_char;
 			input.char_counter++;
 		}
-	}
 
+	}
   /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
   /* USER CODE BEGIN USART2_IRQn 1 */
-
+  HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
   /* USER CODE END USART2_IRQn 1 */
+
 }
 
 /**
@@ -308,3 +314,40 @@ void DMA2_Stream5_IRQHandler(void)
 
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Gently exit interrupt
+//			commacounter++;
+//			//Counts the amount of comma's
+//
+//
+//			switch(commacounter)
+//			{
+//				case 0:
+//					commando.x = USART2->DR;
+//				case 1:
+//					commando.y = uart_char;
+//				case 2:
+//					commando.kleur = uart_char;
+//				case 3:
+//					//commando.tekst = uart_char;  //Dit kan niet
+//				case 4:
+//					commando.fontnaam = uart_char;
+//				case 5:
+//					commando.fontgrootte = uart_char;
+//				case 6:
+//					commando.fontstijl = uart_char;
+//			}
+//
+//			printf("ik zit hierin");

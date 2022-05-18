@@ -105,6 +105,48 @@ typedef struct
 }input_vars;
 extern input_vars input;
 
+//input_vars input;
+
+
+
+typedef struct
+{
+	char type[11];
+	char* x_1;
+	char* y_1;
+	char* x_2;
+	char* y_2;
+	char* kleur;
+	char* dikte;
+	char* x_lup;
+	char* y_lup;
+	char* breedte;
+	char* hoogte;
+	char* rect_kleur;
+	char* gevuld;
+	char* x;
+	char* y;
+	char* text_kleur;
+	char* tekst;
+	char* fontnaam;
+	char* fontgrootte;
+	char* fontstijl;
+	char* nr;
+	char* x_lup_bitmap;
+	char* y_lup_bitmap;
+	char* color_screen;
+
+}UI_t;
+extern UI_t commando;
+
+
+
+
+
+
+
+
+
 /* Globals -------------------------------------------------------------------*/
 extern volatile char container[1024];
 extern volatile int temp;

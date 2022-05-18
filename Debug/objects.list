@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 "./Core/Src/LL_API_G2.o"
+=======
+"./Core/Src/FL_API_G2.o"
+"./Core/Src/LL_API_G2.o"
+"./Core/Src/bitmap.o"
+>>>>>>> Stashed changes
 "./Core/Src/dma.o"
 "./Core/Src/gpio.o"
 "./Core/Src/main.o"

@@ -18,11 +18,16 @@
 //};
 
 
+
+
 void show_errno(const char *err_info);
 
 
-void API_In_DrawLine(UI_t commando);
+void API_In_DrawLine(UI_t api_data);
+extern void API_In_DrawLine(UI_t api_data);
 
+void API_In_DrawRect(UI_t api_data);
+extern void API_In_DrawRect(UI_t api_data);
 
 //s: custom error message
 //

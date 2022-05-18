@@ -1,5 +1,5 @@
-Core/Src/LL_API_G2.o: ../Core/Src/LL_API_G2.c ../Core/Inc/LL_API_G2.h \
- ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/draw.o: ../Core/Src/draw.c ../Core/Inc/main.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -27,9 +27,7 @@ Core/Src/LL_API_G2.o: ../Core/Src/LL_API_G2.c ../Core/Inc/LL_API_G2.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h \
- ../Core/Inc/main.h ../Core/Inc/OL_API_G2.h
-../Core/Inc/LL_API_G2.h:
+ C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -60,5 +58,3 @@ Core/Src/LL_API_G2.o: ../Core/Src/LL_API_G2.c ../Core/Inc/LL_API_G2.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h:
-../Core/Inc/main.h:
-../Core/Inc/OL_API_G2.h:

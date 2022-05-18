@@ -20,14 +20,15 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+
 #include "LL_API_G2.h"
-#include "main.h"
+#include "OL_API_G2.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <errno.h>
 /* USER CODE END Includes */
-
 
 
 ////s: custom error message
@@ -36,16 +37,33 @@
 
 char errnum;
 
-void API_In_DrawLine(UI_t commando)
+
+
+void API_In_DrawLine(UI_t api_data)
 {
-	if(commando.x_1 == 0 ){
-		errno = ERANGE;
-		show_errno(errnum);
-	}
+
+	//plotLine(commando.x_1, commando.y_1, commando.x_2, commando.y_2, commando.kleur, commando.dikte);
+	plotLine(api_data.x_1, api_data.y_1, api_data.x_2, api_data.y_2, api_data.kleur);
+	//plotLine((uint16_t)commando.x_1, (uint16_t)commando.y_1, (uint16_t)commando.x_2, (uint16_t)commando.y_2, (uint8_t)commando.kleur);
+//	if(commando.x_1 == 0 ){
+//		errno = ERANGE;
+//		show_errno(errnum);
+//	}
 
 }
 
+void API_In_DrawRect(UI_t api_data)
+{
 
+	//plotLine(commando.x_1, commando.y_1, commando.x_2, commando.y_2, commando.kleur, commando.dikte);
+	plotRect(api_data.x_1, api_data.y_1, api_data.x_2, api_data.y_2, api_data.kleur);
+	//plotLine((uint16_t)commando.x_1, (uint16_t)commando.y_1, (uint16_t)commando.x_2, (uint16_t)commando.y_2, (uint8_t)commando.kleur);
+//	if(commando.x_1 == 0 ){
+//		errno = ERANGE;
+//		show_errno(errnum);
+//	}
+
+}
 
 
 
@@ -68,6 +86,32 @@ void show_errno(const char *err_info)
     }
     printf("ERROR: %s \n" ,err_info);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

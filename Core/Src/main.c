@@ -26,10 +26,14 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+<<<<<<< Updated upstream
 #include "stdio.h"
 #include "string.h"
 #include "LL_API_G2.h"
 #include <errno.h>
+=======
+#include "FL_API_G2.h"
+>>>>>>> Stashed changes
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -142,6 +146,7 @@ int main(void)
 
 	  if(input.command_execute_flag == TRUE)
 	  {
+<<<<<<< Updated upstream
 		  API_In_DrawLine(commando);
 //		  // Do some stuff
 //		  printf("yes\n");
@@ -150,8 +155,17 @@ int main(void)
 //
 //		  // When finished reset the flag
 		  input.command_execute_flag = FALSE;
+=======
+		 API_Getcommand();
+>>>>>>> Stashed changes
 
 	  }
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -6,7 +6,7 @@
  */
 
 
-
+#include "main.h"
 
 //enum api_error
 //{
@@ -18,6 +18,10 @@
 //};
 
 
+void show_errno(const char *err_info);
+
+
+void API_In_DrawLine(UI_t commando);
 
 
 //s: custom error message

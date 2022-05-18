@@ -1,13 +1,50 @@
-/*
- * LL_API_G2.c
- *
- *  Created on: 12 May 2022
- *      Author: Sahag
- */
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file           : LL_API_G2.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *  Created on: 12 May 2022
+  *      Author: Sahag
+  * <h2><center>&copy; Copyright (c) 2022 Hogeschool Utrecht.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
+/* Includes ------------------------------------------------------------------*/
+#include "LL_API_G2.h"
+#include "main.h"
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <errno.h>
-#include "LL_API_G2.h"
+/* USER CODE END Includes */
+
+
+
+////s: custom error message
+////
+////Output: custom error message followed by colon, space, and implementation-defined error message
+
+char errnum;
+
+void API_In_DrawLine(UI_t commando)
+{
+	if(commando.x_1 == 0 ){
+		errno = ERANGE;
+		show_errno(errnum);
+	}
+
+}
+
 
 
 
@@ -33,27 +70,4 @@ void show_errno(const char *err_info)
 }
 
 
-////s: custom error message
-////
-////Output: custom error message followed by colon, space, and implementation-defined error message
-//
-//void perror(const char *s)
-//{
-//
-//
-//
-//}
-
-
-
-////errnum: error code
-////
-////Output: pointer to the implementation-defined error message string
-//char* strerror(int errnum)
-//{
-//
-//	errnum = 3;
-//
-//	return errno;
-//}
 

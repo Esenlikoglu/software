@@ -50,7 +50,7 @@
 /* USER CODE BEGIN PV */
 
 input_vars input;
-
+UI_t commando;
 
 volatile char container[1024];
 volatile int temp;
@@ -132,7 +132,7 @@ int main(void)
   //unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
-char errnum;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
@@ -142,8 +142,7 @@ char errnum;
 
 	  if(input.command_execute_flag == TRUE)
 	  {
-		  errnum = EDOM;
-		  show_errno(errnum);
+		  API_In_DrawLine(commando);
 //		  // Do some stuff
 //		  printf("yes\n");
 //		  colorTest = ~colorTest; // Toggle screen color

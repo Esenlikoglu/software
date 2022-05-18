@@ -107,6 +107,17 @@ typedef struct
 }input_vars;
 extern input_vars input;
 
+typedef struct
+{
+	char type[11];
+	uint16_t x_1;
+	uint16_t y_1;
+	uint16_t x_2;
+	uint16_t y_2;
+	char text[100];
+
+}UI_t;
+extern UI_t commando;
 
 /* Globals -------------------------------------------------------------------*/
 extern volatile char container[1024];

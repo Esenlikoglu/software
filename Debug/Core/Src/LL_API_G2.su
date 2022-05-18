@@ -1,1 +1,2 @@
-../Core/Src/LL_API_G2.c:15:6:show_errno	16	static
+../Core/Src/LL_API_G2.c:39:6:API_In_DrawLine	8	static
+../Core/Src/LL_API_G2.c:52:6:show_errno	16	static

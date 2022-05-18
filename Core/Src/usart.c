@@ -28,6 +28,8 @@ UART_HandleTypeDef huart2;
 
 /* USART2 init function */
 
+
+
 void MX_USART2_UART_Init(void)
 {
 
@@ -105,6 +107,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+
+
 
 /* USER CODE END 1 */
 

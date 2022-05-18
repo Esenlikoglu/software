@@ -33,7 +33,6 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdint.h"
-
 #include "stdio.h"
 #include "string.h"
 #include <stdlib.h>
@@ -59,7 +58,6 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
-
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

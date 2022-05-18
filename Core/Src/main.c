@@ -21,14 +21,13 @@
 #include "main.h"
 #include "dma.h"
 #include "tim.h"
+#include "text.h"
 #include "usart.h"
 #include "gpio.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
-
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
@@ -84,6 +83,11 @@ int main(void)
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
+char text[5]={65, 77, 73, 78,65};
+//char text1=67;
+
+API_text(75,75,VGA_COL_GREEN,text);
+//API_text(75,75,VGA_COL_GREEN,text1);
 
   /* Configure the system clock */
   SystemClock_Config();
@@ -99,19 +103,21 @@ int main(void)
   MX_TIM2_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
-  UB_VGA_FillScreen(VGA_COL_RED);
-  UB_VGA_SetPixel(10,10,10);
-  UB_VGA_SetPixel(0,0,0x00);
-  UB_VGA_SetPixel(319,0,0x00);
+//  UB_VGA_FillScreen(VGA_COL_GREEN);
+//  UB_VGA_SetPixel(10,10,10);
+//  UB_VGA_SetPixel(0,0,0x00);
+//  UB_VGA_SetPixel(319,0,0x00);
+//  UB_VGA_FillScreen(VGA_COL_BLACK);
+//  void API_draw_text();
+//  plotLine(xposbegin,yposbegin,xposend,yposend,VGA_COL_RED);
 
+//   plotRect(5, 5,5,5, VGA_COL_RED);
+//  plotCircle(xpos, ypos, radius,VGA_COL_RED);
   int i;
-
   for(i = 0; i < LINE_BUFLEN; i++)
 	  input.line_rx_buffer[i] = 0;
-
   // Reset some stuff
   input.byte_buffer_rx[0] = 0;
   input.char_counter = 0;
@@ -123,7 +129,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, input.byte_buffer_rx, BYTE_BUFLEN);
 
   // Test to see if the screen reacts to UART
-  unsigned char colorTest = TRUE;
+//  unsigned char colorTest = TRUE;
 
   /* USER CODE END 2 */
 
@@ -131,13 +137,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 	  if(input.command_execute_flag == TRUE)
 	  {
 		  // Do some stuff
 		  printf("yes\n");
-		  colorTest = ~colorTest; // Toggle screen color
-		  UB_VGA_FillScreen(colorTest);
-
+	//	  colorTest = ~colorTest; // Toggle screen color
 		  // When finished reset the flag
 		  input.command_execute_flag = FALSE;
 	  }

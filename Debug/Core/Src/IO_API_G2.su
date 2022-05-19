@@ -2,4 +2,4 @@
 ../Core/Src/IO_API_G2.c:60:6:plotRect	32	static
 ../Core/Src/IO_API_G2.c:78:6:plotCircle	40	static
 ../Core/Src/IO_API_G2.c:99:6:API_bitmap	24	static
-../Core/Src/IO_API_G2.c:126:6:API_text	56	static
+../Core/Src/IO_API_G2.c:127:6:API_text	56	static

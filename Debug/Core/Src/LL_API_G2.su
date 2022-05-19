@@ -1,2 +1,12 @@
-../Core/Src/LL_API_G2.c:39:6:API_In_DrawLine	8	static
-../Core/Src/LL_API_G2.c:52:6:show_errno	16	static
+../Core/Src/LL_API_G2.c:40:6:API_In_DrawLine	24	static
+../Core/Src/LL_API_G2.c:53:6:API_In_DrawRectangle	24	static
+../Core/Src/LL_API_G2.c:61:6:API_In_DrawCirckel	8	static
+../Core/Src/LL_API_G2.c:69:6:API_In_DrawText	8	static
+../Core/Src/LL_API_G2.c:77:6:show_errno	16	static
+../Core/Src/LL_API_G2.c:102:5:API_ReLi_Sep	24	static
+../Core/Src/LL_API_G2.c:125:6:Seperate_line	200	static
+../Core/Src/LL_API_G2.c:162:6:Seperate_Rectangle	200	static
+../Core/Src/LL_API_G2.c:196:6:Seperate_Circkel	200	static
+../Core/Src/LL_API_G2.c:231:6:Seperate_Text	200	static
+../Core/Src/LL_API_G2.c:264:6:Seperate_Bitmap	56	static
+../Core/Src/LL_API_G2.c:293:6:Seperate_Clearscreen	24	static

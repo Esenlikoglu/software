@@ -27,7 +27,7 @@ Core/Src/usart.o: ../Core/Src/usart.c ../Core/Inc/usart.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h \
+ C:/Users/yassi/Documents/Elektrotechniek\ jaar\ 3/Software\ ontwerp/Software_ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h \
  ../Core/Inc/main.h
 ../Core/Inc/usart.h:
 ../Core/Inc/main.h:
@@ -59,5 +59,5 @@ Core/Src/usart.o: ../Core/Src/usart.c ../Core/Inc/usart.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-C:/Users/Sahag/Desktop/Software\ ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h:
+C:/Users/yassi/Documents/Elektrotechniek\ jaar\ 3/Software\ ontwerp/Software_ontwikkeling/software/Core/ub_lib/stm32_ub_vga_screen.h:
 ../Core/Inc/main.h:

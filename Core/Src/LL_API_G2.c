@@ -1,29 +1,26 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file           : LL_API_G2.c
-  * @brief          : Main program body
+  * @brief          : Logic_layer body
   ******************************************************************************
   * @attention
-  *  Created on: 12 May 2022
-  *      Author: Sahag
-  * <h2><center>&copy; Copyright (c) 2022 Hogeschool Utrecht.
-  * All rights reserved.</center></h2>
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * <h2><center>&copy; Copyright (c) 2022 Groep_2.
+  *
+  *
+  * This file includes all the necessary functions of the API-Logic-Layer
+  * The file contains 12 functions
   *
   ******************************************************************************
   */
-/* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
 #include "LL_API_G2.h"
 #include "IO_API_G2.h"
 #include "main.h"
 /* Private includes ----------------------------------------------------------*/
+
+
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <errno.h>
@@ -31,48 +28,79 @@
 
 
 
-////s: custom error message
-////
-////Output: custom error message followed by colon, space, and implementation-defined error message
+
 
 const char* errnum;
 
+
+/**
+  * @brief Functions plot a line with the given arguments.
+  * @param UI_t apidata
+  * @note  Gives an error if the arguments are zero
+  * @retval None
+  */
 void API_In_DrawLine(UI_t apidata)
 {
-		if(apidata.x_1 == 0 || apidata.y_1 == 0 || apidata.x_2 == 0|| apidata.y_2 == 0|| apidata.kleur== 0)
+	//Checks if the arguments in the struct are equal to zero
+	if(apidata.x_1 == 0 || apidata.y_1 == 0 || apidata.x_2 == 0|| apidata.y_2 == 0|| apidata.kleur== 0)
 	{
+	//Gives an error when the arguments in the struct are zero
 			errno = ERANGE;
 			show_errno(errnum);
-		}
-	 else plotLine(apidata.x_1,apidata.y_1 , apidata.x_2, apidata.y_2,apidata.kleur);
-
-
-
+	}
+	//Else jumps in the function that will plot a line
+	else plotLine(apidata.x_1,apidata.y_1 , apidata.x_2, apidata.y_2,apidata.kleur);
 }
 
+/**
+  * @brief Functions plot a rectangle with the given arguments.
+  * @param UI_t apidata
+  * @note  Gives an error if the arguments are zero
+  * @retval None
+  */
 void API_In_DrawRectangle(UI_t apidata)
 {
-
-
+	//Jumps into function that will plot a rectangle
 	plotRect(apidata.x_1,apidata.y_1 , apidata.x_2, apidata.y_2,apidata.kleur);
 }
 
+/**
+  * @brief Functions plot a circle with the given arguments.
+  * @param UI_t apidata
+  * @note  Gives an error if the arguments are zero
+  * @retval None
+  */
 
 void API_In_DrawCirckel(UI_t apidata)
 {
-
+	//Jumps into function that will plot a circle
 	plotCircle(apidata.x_1,apidata.y_1 , apidata.x_2, apidata.kleur);
 }
 
-
-
+/**
+  * @brief Functions plot text with the given arguments.
+  * @param UI_t apidata
+  * @note  Gives an error if the arguments are zero
+  * @retval None
+  */
 void API_In_DrawText(UI_t apidata)
 {
+	//Jumps into a function that will plot text
 	API_text(apidata.x,apidata.y,apidata.text_kleur,apidata.tekst);
 }
 
+void API_In_Bitmap(UI_t apidata)
+{
 
+	 API_bitmap(apidata.x_1, apidata.y_1);
+	 }
 
+/**
+  * @brief Functions that will switch between different kind of erorrs
+  * @param const char *err_info
+  * @note  Functions will print error in the terminal
+  * @retval None
+  */
 
 void show_errno(const char *err_info)
 {
@@ -95,15 +123,19 @@ void show_errno(const char *err_info)
 }
 
 
-//--------------------------------------------------------------
-// Check if the command is a line or a rectangle
-// Returns 1 if line, 2 if rectangle
-//--------------------------------------------------------------
+/**
+  * @brief Checks if the command is a line or a rectangle
+  * @param void
+  * @note  Returns 1 if line, 2 if rectangle
+  * @retval None
+  */
+
 int API_ReLi_Sep(void)
 {
 	int cmp;
 	char comp_line[LINE_TEXT];
 
+	//Loops the input buffer and passes the characters into another array
 	for(int i = 0; i<LINE_TEXT;i++)
 	{
 		comp_line[i] = input.line_rx_buffer[i];
@@ -118,10 +150,14 @@ int API_ReLi_Sep(void)
 }
 
 
-//--------------------------------------------------------------
-// Seperate the buffer of a line-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
+
+/**
+  * @brief Seperate the buffer of a line-command using comma as delimiter
+  * @param void
+  * @note  Fills the variables in the struct
+  * @retval None
+  */
+
 void Seperate_line(void)
 {
 	int i = 0;
@@ -133,13 +169,13 @@ void Seperate_line(void)
 	//Fills an array with the seperated tokens
 	while( token != NULL )
 	{
-
+		//Passing the value to an array
 		aryvul[i]= token;
 		i++;
 		token = strtok(NULL, ",");
 	}
 
-
+	//Fills the struct
 	commando.x_1 = (uint16_t)atoi(aryvul[ARRAY_FIRST_lOCATION]);
 	commando.y_1 = (uint16_t)atoi(aryvul[ARRAY_SECOND_lOCATION]);
 	commando.x_2 = (uint16_t)atoi(aryvul[ARRAY_THIRD_lOCATION]);
@@ -148,17 +184,19 @@ void Seperate_line(void)
 	commando.dikte = (uint8_t)atoi(aryvul[ARRAY_SIXTH_lOCATION]);
 
 
-	 //draw line
+	 //Jumps into the function that will draw a line
 	 API_In_DrawLine(commando);
 
 }
 
+/**
+  * @brief Seperate the buffer of a rectangle-command using comma as delimiter
+  * @param void
+  * @note  Fills the variables in the struct
+  * @retval None
+  */
 
 
-//--------------------------------------------------------------
-// Seperate the buffer of a rectangle-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
 void Seperate_Rectangle(void)
 {
 	int i = 0;
@@ -170,13 +208,14 @@ void Seperate_Rectangle(void)
 	//Fills an array with the seperated tokens
 	while( token != NULL )
 	{
+		//Passing the value to an array
 		aryvul[i]= token;
 		i++;
 		token = strtok(NULL, ",");
 	}
 
 
-
+	//Fills the struct
 	commando.x_1 = (uint16_t)atoi(aryvul[ARRAY_FIRST_lOCATION]);
 	commando.y_1 = (uint16_t)atoi(aryvul[ARRAY_SECOND_lOCATION]);
 	commando.x_2 = (uint16_t)atoi(aryvul[ARRAY_THIRD_lOCATION]);
@@ -184,15 +223,21 @@ void Seperate_Rectangle(void)
 	commando.kleur = (uint8_t)atoi(aryvul[ARRAY_FIFTH_lOCATION]);
 	commando.gevuld = (uint8_t)atoi(aryvul[ARRAY_SIXTH_lOCATION]);
 
+	//Jumps into the function that will draw a rectangle
 	API_In_DrawRectangle(commando);
 
 
 }
 
-//--------------------------------------------------------------
-// Seperate the buffer of a circkel-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
+
+
+/**
+  * @brief Seperate the buffer of a circkel-command using comma as delimiter
+  * @param void
+  * @note  Fills the variables in the struct
+  * @retval None
+  */
+
 void Seperate_Circkel(void)
 {
 	int i = 0;
@@ -204,13 +249,14 @@ void Seperate_Circkel(void)
 	//Fills an array with the seperated tokens
 	while( token != NULL )
 	{
+		//Passing the value to an array
 		aryvul[i]= token;
 		i++;
 		token = strtok(NULL, ",");
 	}
 
 
-
+	//Fills the struct
 	commando.x_1 = (uint16_t)atoi(aryvul[ARRAY_FIRST_lOCATION]);
 	commando.y_1 = (uint16_t)atoi(aryvul[ARRAY_SECOND_lOCATION]);
 	commando.x_2 = (uint16_t)atoi(aryvul[ARRAY_THIRD_lOCATION]);
@@ -218,15 +264,21 @@ void Seperate_Circkel(void)
 	commando.kleur = (uint8_t)atoi(aryvul[ARRAY_FIFTH_lOCATION]);
 	commando.gevuld = (uint8_t)atoi(aryvul[ARRAY_SIXTH_lOCATION]);
 
+	//Jumps into the function that will draw a circle
 	API_In_DrawCirckel(commando);
 
 
 }
 
-//--------------------------------------------------------------
-// Seperate the buffer of a text-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
+
+
+/**
+  * @brief Seperate the buffer of a text-command using comma as delimiter
+  * @param void
+  * @note  Fills the variables in the struct
+  * @retval None
+  */
+
 
 void Seperate_Text(void)
 {
@@ -239,6 +291,7 @@ void Seperate_Text(void)
 	//Fills an array with the seperated tokens
 	while( token != NULL )
 	{
+		//Passing the value to an array
 		aryvul[i]= token;
 		i++;
 		token = strtok(NULL, ",");
@@ -249,17 +302,21 @@ void Seperate_Text(void)
 	commando.y = (uint16_t)atoi(aryvul[ARRAY_SECOND_lOCATION]);
 	commando.text_kleur = (uint8_t)atoi(aryvul[ARRAY_THIRD_lOCATION]);
 	strncpy(commando.tekst, aryvul[ARRAY_FOURTH_lOCATION] , sizeof(commando.x_1));
-	//commando.tekst = (uint8_t)atoi(aryvul[ARRAY_SIXTH_lOCATION]);
 
+	//Jumps into the function that will draw text
 	API_In_DrawText(commando);
 
 
 }
 
-//--------------------------------------------------------------
-// Seperate the buffer of a Bitmap-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
+
+
+/**
+  * @brief Seperate the buffer of a Bitmap-command using comma as delimiter
+  * @param void
+  * @note  Fills the variables in the struct
+  * @retval None
+  */
 
 void Seperate_Bitmap(void)
 {
@@ -272,23 +329,30 @@ void Seperate_Bitmap(void)
 	//Fills an array with the seperated tokens
 	while( token != NULL )
 	{
+		//Passing the value to an array
 		aryvul[i]= token;
 		i++;
 		token = strtok(NULL, ",");
 	}
 
 	//Fills the struct
-	 memcpy(&commando.nr, &aryvul[ARRAY_FIRST_lOCATION] , sizeof(commando.x_1));
+	// memcpy(&commando.nr, &aryvul[ARRAY_FIRST_lOCATION] , sizeof(commando.x_1));
 	 memcpy(&commando.x_1, &aryvul[ARRAY_SECOND_lOCATION] , sizeof(commando.x_1));
 	 memcpy(&commando.y_1, &aryvul[ARRAY_THIRD_lOCATION] , sizeof(commando.x_1));
+
+	 //Jumps into the function that will draw a bitmap
+	 API_In_Bitmap(commando);
 
 }
 
 
-//--------------------------------------------------------------
-// Seperate the buffer of a Clearscreen-command using comma as delimiter
-// Fills the variables in the struct
-//--------------------------------------------------------------
+
+/**
+  * @brief Seperate the buffer of a Clearscreen-command using comma as delimiter
+  * @param void
+  * @note  Shifting the index of the input-buffer-array, reset the screen color
+  * @retval None
+  */
 
 void Seperate_Clearscreen(void)
 {
@@ -296,7 +360,7 @@ void Seperate_Clearscreen(void)
 	char temp;
 	int pos = INDEX_COLOR;
 
-
+	//Shifting the input index
 	while(pos)
 	{
 		temp = input.line_rx_buffer[0];
@@ -307,7 +371,7 @@ void Seperate_Clearscreen(void)
 		pos--;
 	}
 
-
+	//Reset the screen color
 	if(strncmp(input.line_rx_buffer, "rood", sizeof(input.line_rx_buffer)) == 0) UB_VGA_FillScreen(VGA_COL_RED);
 	else if(strncmp(input.line_rx_buffer, "zwart", sizeof(input.line_rx_buffer)) == 0) UB_VGA_FillScreen(VGA_COL_BLACK);
 	else if(strncmp(input.line_rx_buffer, "groen", sizeof(input.line_rx_buffer)) == 0) UB_VGA_FillScreen(VGA_COL_GREEN);

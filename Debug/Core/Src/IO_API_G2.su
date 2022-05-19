@@ -1,5 +1,5 @@
-../Core/Src/IO_API_G2.c:12:6:plotLine	48	static
-../Core/Src/IO_API_G2.c:29:6:plotRect	32	static
-../Core/Src/IO_API_G2.c:39:6:plotCircle	40	static
-../Core/Src/IO_API_G2.c:54:6:API_bitmap	24	static
-../Core/Src/IO_API_G2.c:72:6:API_text	56	static
+../Core/Src/IO_API_G2.c:33:6:plotLine	48	static
+../Core/Src/IO_API_G2.c:60:6:plotRect	32	static
+../Core/Src/IO_API_G2.c:78:6:plotCircle	40	static
+../Core/Src/IO_API_G2.c:99:6:API_bitmap	24	static
+../Core/Src/IO_API_G2.c:126:6:API_text	56	static

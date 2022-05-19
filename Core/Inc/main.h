@@ -112,29 +112,25 @@ extern input_vars input;
 typedef struct
 {
 	char type[11];
-	char* x_1;
-	char* y_1;
-	char* x_2;
-	char* y_2;
-	char* kleur;
-	char* dikte;
-	char* x_lup;
-	char* y_lup;
-	char* breedte;
-	char* hoogte;
-	char* rect_kleur;
-	char* gevuld;
-	char* x;
-	char* y;
-	char* text_kleur;
-	char* tekst;
+	uint16_t x_1;
+	uint16_t y_1;
+	uint16_t x_2;
+	uint16_t y_2;
+	uint8_t kleur;
+	uint8_t dikte;
+	uint8_t gevuld;
+	uint16_t nr;
+
+	int x;
+	int y;
+	char text_kleur;
+	char tekst[100];
 	char* fontnaam;
 	char* fontgrootte;
 	char* fontstijl;
-	char* nr;
-	char* x_lup_bitmap;
-	char* y_lup_bitmap;
-	char* color_screen;
+	//char* x_lup_bitmap;
+	//char* y_lup_bitmap;
+	//uint8_t color_screen;
 
 }UI_t;
 extern UI_t commando;

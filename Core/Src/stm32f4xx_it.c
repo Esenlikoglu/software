@@ -326,28 +326,3 @@ void DMA2_Stream5_IRQHandler(void)
 
 
 
-
-//Gently exit interrupt
-//			commacounter++;
-//			//Counts the amount of comma's
-//
-//
-//			switch(commacounter)
-//			{
-//				case 0:
-//					commando.x = USART2->DR;
-//				case 1:
-//					commando.y = uart_char;
-//				case 2:
-//					commando.kleur = uart_char;
-//				case 3:
-//					//commando.tekst = uart_char;  //Dit kan niet
-//				case 4:
-//					commando.fontnaam = uart_char;
-//				case 5:
-//					commando.fontgrootte = uart_char;
-//				case 6:
-//					commando.fontstijl = uart_char;
-//			}
-//
-//			printf("ik zit hierin");
